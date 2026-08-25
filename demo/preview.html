@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preview site</title>
+    <link rel="stylesheet" href="./preview.css" />
+  </head>
+  <body class="halloween" data-halloween-start="01-01" data-halloween-end="31-12">
+    <nav class="pv-nav">
+      <span class="pv-brand">🎃 Nightshade Co.</span>
+      <a class="pv-nav-link" href="#pv-main">Sample link</a>
+    </nav>
+
+    <main id="pv-main">
+      <p class="pv-eyebrow">Seasonal storefront demo</p>
+      <h1 class="pv-title">Your site, a little more haunted.</h1>
+      <p class="pv-copy">
+        This is an ordinary page — halloween.js only adds a fixed overlay layer on top of it. Nothing here
+        is modified, resized or replaced.
+      </p>
+      <div class="pv-actions">
+        <button type="button" class="pv-btn">Shop the collection</button>
+        <a class="pv-link" href="#pv-main">Learn more</a>
+      </div>
+      <div class="pv-cards">
+        <div class="pv-card">
+          <p class="pv-card-stat">🎃</p>
+          <p class="pv-card-label">Seasonal collection</p>
+        </div>
+        <div class="pv-card">
+          <p class="pv-card-stat">🕯️</p>
+          <p class="pv-card-label">Open till midnight</p>
+        </div>
+      </div>
+    </main>
+
+    <script src="./dist/halloween.iife.js"></script>
+    <script src="./preview.js"></script>
+  </body>
+</html>

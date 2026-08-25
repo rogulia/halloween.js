@@ -1,0 +1,141 @@
+:root {
+  --bg-0: #0b0710;
+  --bg-1: #170f22;
+  --surface: #1c1327;
+  --border: #382a4a;
+  --fg: #f3ecf8;
+  --fg-muted: #bcadd0;
+  --accent: #f4b342;
+  --accent-ink: #2a1b05;
+}
+
+:root[data-theme="light"] {
+  --bg-0: #faf5ec;
+  --bg-1: #f3ebd9;
+  --surface: #fffdf8;
+  --border: #ddccaa;
+  --fg: #241a10;
+  --fg-muted: #5b4a35;
+  --accent: #a2670f;
+  --accent-ink: #fffaf0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background: radial-gradient(ellipse 700px 400px at 50% 0%, var(--bg-1) 0%, var(--bg-0) 100%);
+  color: var(--fg);
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+  overflow-x: hidden;
+}
+
+.pv-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.pv-brand {
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.pv-nav-link {
+  color: var(--fg-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+main {
+  padding: 40px 24px 32px;
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.pv-eyebrow {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+
+.pv-title {
+  font-size: clamp(1.4rem, 4vw, 1.9rem);
+  line-height: 1.15;
+  margin: 0 0 12px;
+}
+
+.pv-copy {
+  color: var(--fg-muted);
+  font-size: 0.92rem;
+  margin: 0 0 22px;
+}
+
+.pv-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 26px;
+}
+
+.pv-btn {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.pv-link {
+  color: var(--fg-muted);
+  font-size: 0.88rem;
+  text-decoration: underline;
+}
+
+.pv-cards {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pv-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 20px;
+  min-width: 130px;
+}
+
+.pv-card-stat {
+  font-size: 1.4rem;
+  margin: 0 0 4px;
+}
+
+.pv-card-label {
+  font-size: 0.78rem;
+  color: var(--fg-muted);
+  margin: 0;
+}
