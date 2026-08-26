@@ -2,7 +2,9 @@
 
 Zero-dependency Halloween screen-corner decorations and ambient page effects for any website.
 
-[Live demo](https://halloween.js.org/) (fallback while the custom domain is being set up: [GitHub Pages](https://rogulia.github.io/halloween.js/))
+[Live demo](https://halloween.js.org/)
+
+![halloween.js cover](assets/cover.png)
 
 ## Install
 
@@ -19,10 +21,10 @@ A plain `import` runs the library's auto-init side effect immediately — it sta
 For a no-build-step site (WordPress Theme Editor → header, any "custom HTML/scripts" plugin, plain HTML), a single script tag is still the simplest way to install it — no npm, no bundler, no separate CSS file, the script injects its own styles and auto-initializes the same way:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.1/dist/halloween.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.2/dist/halloween.iife.js"></script>
 ```
 
-After the script tag, the same imperative API is available as `Halloween.pageEffects.start("eyes")` etc. — see [Advanced: JS API](#advanced-js-api) below. Always pin an exact released version (like `@1.0.1` above) — jsDelivr caches an npm version forever, so it can never change under you.
+After the script tag, the same imperative API is available as `Halloween.pageEffects.start("eyes")` etc. — see [Advanced: JS API](#advanced-js-api) below. Always pin an exact released version (like `@1.0.2` above) — jsDelivr caches an npm version forever, so it can never change under you.
 
 ## The master switch
 
@@ -103,7 +105,7 @@ If you're using the plain script tag, `?s=DD-MM&e=DD-MM` on the script's own `sr
 
 ```html
 <script
-  src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.1/dist/halloween.iife.js?s=18-10&e=02-11"
+  src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.2/dist/halloween.iife.js?s=18-10&e=02-11"
 ></script>
 ```
 

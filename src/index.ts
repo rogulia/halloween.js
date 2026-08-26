@@ -4,11 +4,11 @@ import {
   stopAllPageEffects,
   syncPageEffectsFromBody,
   type PageEffectName,
-} from "./page-effects";
-import { injectStyles, applyColorOverride } from "./styles";
-import { watchReducedMotion } from "./dom";
-import { CONFIG, isWithinSeason, getSeasonWindow } from "./config";
-import { ensureScreenCorners, removeScreenCorners } from "./screen-corners";
+} from './page-effects';
+import { injectStyles, applyColorOverride } from './styles';
+import { watchReducedMotion } from './dom';
+import { CONFIG, isWithinSeason, getSeasonWindow } from './config';
+import { ensureScreenCorners, removeScreenCorners } from './screen-corners';
 
 // Optional manual sync: re-runs the same class-driven logic trySync() runs
 // automatically (on load, on body class changes, on reduced-motion changes).
@@ -39,9 +39,9 @@ export const pageEffects = {
   stop: stopPageEffect,
 };
 
-export type { PageEffectName } from "./page-effects";
+export type { PageEffectName } from './page-effects';
 
-const MASTER_CLASS = "halloween";
+const MASTER_CLASS = 'halloween';
 let bodyObserved = false;
 let reducedMotionWatched = false;
 
@@ -67,10 +67,11 @@ let reducedMotionWatched = false;
 // (timers + visible nodes) and the screen-corner webs are torn down
 // immediately, not left running from before.
 function trySync() {
-  if (typeof document === "undefined") return;
+  if (typeof document === 'undefined') return;
   const season = getSeasonWindow();
   const active =
-    document.body.classList.contains(MASTER_CLASS) && isWithinSeason(new Date(), season.start, season.end);
+    document.body.classList.contains(MASTER_CLASS) &&
+    isWithinSeason(new Date(), season.start, season.end);
 
   if (!active) {
     stopAllPageEffects();
@@ -92,7 +93,7 @@ function autoInit() {
     const observer = new MutationObserver(trySync);
     observer.observe(document.body, {
       attributes: true,
-      attributeFilter: ["class", "data-halloween-start", "data-halloween-end"],
+      attributeFilter: ['class', 'data-halloween-start', 'data-halloween-end'],
     });
   }
 
@@ -108,9 +109,9 @@ function autoInit() {
   }
 }
 
-if (typeof document !== "undefined") {
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", autoInit);
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', autoInit);
   } else {
     autoInit();
   }

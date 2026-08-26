@@ -1,8 +1,8 @@
-import { WEB_SVG } from "./svg";
-import { fromHTML } from "./dom";
-import { getLayer } from "./layer";
+import { WEB_SVG } from './svg';
+import { fromHTML } from './dom';
+import { getLayer } from './layer';
 
-const CORNERS = ["left-top", "right-top", "left-bottom", "right-bottom"] as const;
+const CORNERS = ['left-top', 'right-top', 'left-bottom', 'right-bottom'] as const;
 
 let created = false;
 let cornerNodes: HTMLElement[] = [];
@@ -13,11 +13,13 @@ let cornerNodes: HTMLElement[] = [];
  * (body.halloween-screen-{corner}), so toggling is instant with no JS involved.
  */
 export function ensureScreenCorners() {
-  if (created || typeof document === "undefined") return;
+  if (created || typeof document === 'undefined') return;
   created = true;
   const layer = getLayer();
   cornerNodes = CORNERS.map((corner) => {
-    const node = fromHTML(`<div class="halloween-screen-corner halloween-screen-corner--${corner}">${WEB_SVG}</div>`);
+    const node = fromHTML(
+      `<div class="halloween-screen-corner halloween-screen-corner--${corner}">${WEB_SVG}</div>`,
+    );
     layer.appendChild(node);
     return node;
   });

@@ -1,4 +1,4 @@
-import { vi } from "vitest";
+import { vi } from 'vitest';
 
 // jsdom has no matchMedia implementation at all. prefersReducedMotion()
 // (src/dom.ts) reads it directly, so every test that touches element.ts or
@@ -18,21 +18,21 @@ export function mockMatchMedia(reducedMotion: boolean) {
     get matches() {
       return matches;
     },
-    media: "(prefers-reduced-motion: reduce)",
+    media: '(prefers-reduced-motion: reduce)',
     onchange: null,
     addListener: vi.fn((cb: (ev: { matches: boolean }) => void) => changeListeners.add(cb)),
     removeListener: vi.fn((cb: (ev: { matches: boolean }) => void) => changeListeners.delete(cb)),
     addEventListener: vi.fn((type: string, cb: (ev: { matches: boolean }) => void) => {
-      if (type === "change") changeListeners.add(cb);
+      if (type === 'change') changeListeners.add(cb);
     }),
     removeEventListener: vi.fn((type: string, cb: (ev: { matches: boolean }) => void) => {
-      if (type === "change") changeListeners.delete(cb);
+      if (type === 'change') changeListeners.delete(cb);
     }),
     dispatchEvent: vi.fn(),
   };
 
   window.matchMedia = vi.fn().mockImplementation((query: string) => {
-    if (query.includes("prefers-reduced-motion")) return reducedMotionMql;
+    if (query.includes('prefers-reduced-motion')) return reducedMotionMql;
     return {
       matches: false,
       media: query,
@@ -67,9 +67,11 @@ export function mockMatchMedia(reducedMotion: boolean) {
 // letting jsdom's real (always-null-outside-a-script-tag) getter show
 // through again for later tests.
 export function mockCurrentScript(query: string | null): () => void {
-  const script = document.createElement("script");
-  script.src = query ? `https://example.test/halloween.iife.js${query}` : "https://example.test/halloween.iife.js";
-  Object.defineProperty(document, "currentScript", { value: script, configurable: true });
+  const script = document.createElement('script');
+  script.src = query
+    ? `https://example.test/halloween.iife.js${query}`
+    : 'https://example.test/halloween.iife.js';
+  Object.defineProperty(document, 'currentScript', { value: script, configurable: true });
   return () => {
     delete (document as unknown as { currentScript?: unknown }).currentScript;
   };

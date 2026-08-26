@@ -18,7 +18,7 @@ if (!Element.prototype.animate) {
   };
 }
 
-if (typeof globalThis.requestAnimationFrame !== "function") {
+if (typeof globalThis.requestAnimationFrame !== 'function') {
   globalThis.requestAnimationFrame = ((cb: FrameRequestCallback) =>
     setTimeout(() => cb(Date.now()), 0) as unknown as number) as typeof requestAnimationFrame;
 }

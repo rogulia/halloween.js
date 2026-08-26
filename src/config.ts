@@ -2,7 +2,7 @@
 // <script src> is executing, so it must be captured at module top level —
 // by the time any later callback runs (DOMContentLoaded, a timer) it's null.
 const scriptParams: URLSearchParams | null = (() => {
-  if (typeof document === "undefined") return null;
+  if (typeof document === 'undefined') return null;
   const script = document.currentScript as HTMLScriptElement | null;
   if (!script?.src) return null;
   try {
@@ -23,17 +23,17 @@ export const CONFIG = {
   // classic-script fallback layer only; getSeasonWindow() below is what
   // actually resolves the effective window at each sync (body data
   // attributes take priority over these captured query params).
-  seasonStart: str("s", "18-10"),
-  seasonEnd: str("e", "02-11"),
+  seasonStart: str('s', '18-10'),
+  seasonEnd: str('e', '02-11'),
   // Spider/web color override, any valid CSS color. ?color=%23ff6b00 — empty
   // means "no override", spiders and webs inherit currentColor as before.
-  color: str("color", ""),
+  color: str('color', ''),
 };
 
 // Reads a single non-empty, non-whitespace-only body attribute, or falls
 // back — used by getSeasonWindow() below for data-halloween-start/-end.
 function bodyAttrOr(name: string, fallback: string): string {
-  if (typeof document === "undefined" || !document.body) return fallback;
+  if (typeof document === 'undefined' || !document.body) return fallback;
   const raw = document.body.getAttribute(name);
   if (raw === null) return fallback;
   const trimmed = raw.trim();
@@ -59,8 +59,8 @@ function bodyAttrOr(name: string, fallback: string): string {
  */
 export function getSeasonWindow(): { start: string; end: string } {
   return {
-    start: bodyAttrOr("data-halloween-start", CONFIG.seasonStart),
-    end: bodyAttrOr("data-halloween-end", CONFIG.seasonEnd),
+    start: bodyAttrOr('data-halloween-start', CONFIG.seasonStart),
+    end: bodyAttrOr('data-halloween-end', CONFIG.seasonEnd),
   };
 }
 

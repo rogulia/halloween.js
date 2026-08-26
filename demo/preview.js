@@ -3,7 +3,7 @@
 // origin without checking, since this document is reachable by anything
 // that can load it in an iframe, not just our own parent page.
 (() => {
-  "use strict";
+  'use strict';
 
   const PARENT_ORIGIN = window.location.origin;
 
@@ -13,20 +13,20 @@
   // nothing outside this set is ever touched, no matter what a message
   // claims.
   const CORNER_CLASSES = {
-    lt: "halloween-screen-left-top",
-    rt: "halloween-screen-right-top",
-    lb: "halloween-screen-left-bottom",
-    rb: "halloween-screen-right-bottom",
+    lt: 'halloween-screen-left-top',
+    rt: 'halloween-screen-right-top',
+    lb: 'halloween-screen-left-bottom',
+    rb: 'halloween-screen-right-bottom',
   };
   const EFFECT_CLASSES = {
-    eyes: "halloween-eyes",
-    witches: "halloween-witches",
-    spiderDrop: "halloween-spider-drop",
-    tombstones: "halloween-tombstones",
+    eyes: 'halloween-eyes',
+    witches: 'halloween-witches',
+    spiderDrop: 'halloween-spider-drop',
+    tombstones: 'halloween-tombstones',
   };
   const INTENSITY_CLASSES = {
-    subtle: "halloween-intensity-subtle",
-    party: "halloween-intensity-party",
+    subtle: 'halloween-intensity-subtle',
+    party: 'halloween-intensity-party',
   };
   const ALL_MANAGED_CLASSES = [
     ...Object.values(CORNER_CLASSES),
@@ -35,23 +35,26 @@
   ];
 
   const HEX_PATTERN = /^#([0-9a-f]{3}|[0-9a-f]{6})$/i;
-  const VALID_INTENSITIES = new Set(["subtle", "normal", "party"]);
-  const VALID_THEMES = new Set(["dark", "light"]);
+  const VALID_INTENSITIES = new Set(['subtle', 'normal', 'party']);
+  const VALID_THEMES = new Set(['dark', 'light']);
 
   function isBoolMap(value, keys) {
-    if (!value || typeof value !== "object") return false;
-    return keys.every((key) => typeof value[key] === "boolean");
+    if (!value || typeof value !== 'object') return false;
+    return keys.every((key) => typeof value[key] === 'boolean');
   }
 
   // Strict shape check — every field required, no extra trust extended to
   // anything not explicitly listed. A message that fails this is dropped
   // silently rather than partially applied.
   function isValidStatePayload(payload) {
-    if (!payload || typeof payload !== "object") return false;
-    if (!isBoolMap(payload.corners, ["lt", "rt", "lb", "rb"])) return false;
-    if (!isBoolMap(payload.effects, ["eyes", "witches", "spiderDrop", "tombstones"])) return false;
+    if (!payload || typeof payload !== 'object') return false;
+    if (!isBoolMap(payload.corners, ['lt', 'rt', 'lb', 'rb'])) return false;
+    if (!isBoolMap(payload.effects, ['eyes', 'witches', 'spiderDrop', 'tombstones'])) return false;
     if (!VALID_INTENSITIES.has(payload.intensity)) return false;
-    if (payload.color !== null && !(typeof payload.color === "string" && HEX_PATTERN.test(payload.color))) {
+    if (
+      payload.color !== null &&
+      !(typeof payload.color === 'string' && HEX_PATTERN.test(payload.color))
+    ) {
       return false;
     }
     if (!VALID_THEMES.has(payload.theme)) return false;
@@ -79,12 +82,12 @@
     });
 
     if (payload.color) {
-      document.body.style.setProperty("--halloween-color", payload.color);
+      document.body.style.setProperty('--halloween-color', payload.color);
     } else {
-      document.body.style.removeProperty("--halloween-color");
+      document.body.style.removeProperty('--halloween-color');
     }
 
-    document.documentElement.setAttribute("data-theme", payload.theme);
+    document.documentElement.setAttribute('data-theme', payload.theme);
   }
 
   // Forces a full stop-then-restart of every ambient effect and screen
@@ -93,27 +96,27 @@
   // microtask, and re-adding it one animation frame later (a real yield,
   // not a same-tick flicker) lets it rebuild from a clean, empty state.
   function replay() {
-    document.body.classList.remove("halloween");
+    document.body.classList.remove('halloween');
     requestAnimationFrame(() => {
-      document.body.classList.add("halloween");
+      document.body.classList.add('halloween');
     });
   }
 
   function sendReady() {
-    window.parent.postMessage({ type: "halloween-preview:ready" }, PARENT_ORIGIN);
+    window.parent.postMessage({ type: 'halloween-preview:ready' }, PARENT_ORIGIN);
   }
 
-  window.addEventListener("message", (event) => {
+  window.addEventListener('message', (event) => {
     if (event.source !== window.parent) return;
     if (event.origin !== PARENT_ORIGIN) return;
     const data = event.data;
-    if (!data || typeof data !== "object" || typeof data.type !== "string") return;
+    if (!data || typeof data !== 'object' || typeof data.type !== 'string') return;
 
-    if (data.type === "halloween-preview:state") {
+    if (data.type === 'halloween-preview:state') {
       if (isValidStatePayload(data.payload)) applyState(data.payload);
       return;
     }
-    if (data.type === "halloween-preview:replay") {
+    if (data.type === 'halloween-preview:replay') {
       replay();
       return;
     }
@@ -122,7 +125,7 @@
     // attached, and every valid ping just gets answered with "ready" again
     // — safe to receive any number of times, since the parent's response to
     // "ready" is just re-sending its current state, applied idempotently.
-    if (data.type === "halloween-preview:ping") {
+    if (data.type === 'halloween-preview:ping') {
       sendReady();
     }
   });

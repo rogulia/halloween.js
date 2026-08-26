@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#150e1f"/>
+  <g transform="translate(64,64) scale(12)" color="#f4b342">
+    <g stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M19,11 L26,8 L31,10"/>
+      <path d="M20,14 L28,13 L32,16"/>
+      <path d="M20,17 L28,19 L31,23"/>
+      <path d="M19,20 L25,25 L28,29"/>
+      <path d="M13,11 L6,8 L1,10"/>
+      <path d="M12,14 L4,13 L0,16"/>
+      <path d="M12,17 L4,19 L1,23"/>
+      <path d="M13,20 L7,25 L4,29"/>
+    </g>
+    <ellipse cx="16" cy="19" rx="7" ry="6.2" fill="currentColor"/>
+    <circle cx="16" cy="10.5" r="4.2" fill="currentColor"/>
+  </g>
+</svg>

@@ -1,4 +1,4 @@
-import { fromHTML } from "./dom";
+import { fromHTML } from './dom';
 
 let layer: HTMLElement | null = null;
 

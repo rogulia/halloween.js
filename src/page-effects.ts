@@ -1,8 +1,8 @@
-import { EYES_SVG, WITCH_SVG, DROP_SPIDER_SVG, TOMBSTONE_SVG } from "./svg";
-import { fromHTML, prefersReducedMotion } from "./dom";
-import { getLayer } from "./layer";
+import { EYES_SVG, WITCH_SVG, DROP_SPIDER_SVG, TOMBSTONE_SVG } from './svg';
+import { fromHTML, prefersReducedMotion } from './dom';
+import { getLayer } from './layer';
 
-export type PageEffectName = "eyes" | "witches" | "spider-drop" | "tombstones";
+export type PageEffectName = 'eyes' | 'witches' | 'spider-drop' | 'tombstones';
 
 // Random delay range between witch spawns, in milliseconds. Internal-only —
 // not configurable via script URL params.
@@ -18,7 +18,7 @@ interface EffectDef {
   maxActive: number;
 }
 
-type IntensityName = "subtle" | "normal" | "party";
+type IntensityName = 'subtle' | 'normal' | 'party';
 
 interface IntensityPreset {
   delayMultiplier: number;
@@ -37,11 +37,11 @@ const INTENSITY_PRESETS: Record<IntensityName, IntensityPreset> = {
 // checked fresh on every call — never cached, so a class change is picked
 // up by the next scheduling cycle without any extra wiring.
 function currentIntensity(): IntensityName {
-  if (typeof document === "undefined") return "normal";
+  if (typeof document === 'undefined') return 'normal';
   const cl = document.body.classList;
-  if (cl.contains("halloween-intensity-party")) return "party";
-  if (cl.contains("halloween-intensity-subtle")) return "subtle";
-  return "normal";
+  if (cl.contains('halloween-intensity-party')) return 'party';
+  if (cl.contains('halloween-intensity-subtle')) return 'subtle';
+  return 'normal';
 }
 
 const timers = new Map<PageEffectName, number>();
@@ -69,14 +69,14 @@ function spawnEyes() {
   node.style.left = `${5 + Math.random() * 85}%`;
   node.style.top = `${10 + Math.random() * 70}%`;
   l.appendChild(node);
-  track("eyes", node);
-  requestAnimationFrame(() => node.classList.add("halloween-visible"));
+  track('eyes', node);
+  requestAnimationFrame(() => node.classList.add('halloween-visible'));
   const visibleFor = 2400 + Math.random() * 1600;
   setTimeout(() => {
-    node.classList.remove("halloween-visible");
+    node.classList.remove('halloween-visible');
     setTimeout(() => {
       node.remove();
-      untrack("eyes", node);
+      untrack('eyes', node);
     }, 700);
   }, visibleFor);
 }
@@ -94,35 +94,38 @@ function spawnWitch() {
   const ltr = Math.random() < 0.5;
   // "halloween-witch-item", distinct from the body class "halloween-witches".
   const node = fromHTML(
-    `<div class="halloween-witch-item${ltr ? "" : " halloween-witch-item--rtl"}">${WITCH_SVG}</div>`,
+    `<div class="halloween-witch-item${ltr ? '' : ' halloween-witch-item--rtl'}">${WITCH_SVG}</div>`,
   );
   node.style.top = `${5 + Math.random() * 35}%`;
   if (ltr) {
-    node.style.left = "-180px";
+    node.style.left = '-180px';
   } else {
-    node.style.right = "-180px";
+    node.style.right = '-180px';
   }
   l.appendChild(node);
-  track("witches", node);
+  track('witches', node);
 
   const angleDeg = randomBetween(-30, 30);
   const verticalDrift = Math.tan((angleDeg * Math.PI) / 180) * 220;
-  const travel = (typeof window !== "undefined" ? window.innerWidth : 1200) + 360;
+  const travel = (typeof window !== 'undefined' ? window.innerWidth : 1200) + 360;
   const dxEnd = ltr ? travel : -travel;
   const duration = randomBetween(7000, 12000);
 
   const animation = node.animate(
     [
-      { transform: "translate(0px, 0px) scale(0.5)", opacity: 0.55 },
-      { transform: `translate(${dxEnd * 0.46}px, ${-verticalDrift * 0.5}px) scale(1.3)`, opacity: 1 },
+      { transform: 'translate(0px, 0px) scale(0.5)', opacity: 0.55 },
+      {
+        transform: `translate(${dxEnd * 0.46}px, ${-verticalDrift * 0.5}px) scale(1.3)`,
+        opacity: 1,
+      },
       { transform: `translate(${dxEnd}px, ${-verticalDrift}px) scale(0.4)`, opacity: 0.5 },
     ],
-    { duration, easing: "linear", fill: "forwards" },
+    { duration, easing: 'linear', fill: 'forwards' },
   );
 
   const cleanup = () => {
     node.remove();
-    untrack("witches", node);
+    untrack('witches', node);
   };
   animation.onfinish = cleanup;
   animation.oncancel = cleanup;
@@ -141,7 +144,7 @@ function spawnDroppingSpider() {
   );
   node.style.left = `${2 + Math.random() * 92}%`;
   l.appendChild(node);
-  track("spider-drop", node);
+  track('spider-drop', node);
 
   const dropMs = 1800 + Math.random() * 1200;
   const holdMs = 1200 + Math.random() * 1600;
@@ -158,20 +161,20 @@ function spawnDroppingSpider() {
   // stays a single CSS-driven source of truth instead of a second
   // hardcoded number that could drift.
   const dropHeight =
-    "calc(75vh + var(--halloween-spider-drop-height, var(--halloween-preset-spider-drop-height, 90px)))";
+    'calc(75vh + var(--halloween-spider-drop-height, var(--halloween-preset-spider-drop-height, 90px)))';
   const animation = node.animate(
     [
-      { height: "0px", offset: 0 },
+      { height: '0px', offset: 0 },
       { height: dropHeight, offset: dropMs / total },
       { height: dropHeight, offset: (dropMs + holdMs) / total },
-      { height: "0px", offset: 1 },
+      { height: '0px', offset: 1 },
     ],
-    { duration: total, easing: "ease-in-out", fill: "forwards" },
+    { duration: total, easing: 'ease-in-out', fill: 'forwards' },
   );
 
   const cleanup = () => {
     node.remove();
-    untrack("spider-drop", node);
+    untrack('spider-drop', node);
   };
   animation.onfinish = cleanup;
   animation.oncancel = cleanup;
@@ -198,7 +201,7 @@ function spawnTombstone() {
   const node = fromHTML(`<div class="halloween-tombstone-item">${TOMBSTONE_SVG}</div>`);
   node.style.left = `${4 + Math.random() * 84}%`;
   l.appendChild(node);
-  track("tombstones", node);
+  track('tombstones', node);
 
   const tiltDeg = randomBetween(-6, 6);
   const scale = randomBetween(0.92, 1.08);
@@ -219,12 +222,12 @@ function spawnTombstone() {
       { transform: risen, opacity: 1, offset: (riseMs + holdMs) / total },
       { transform: hidden, opacity: 0, offset: 1 },
     ],
-    { duration: total, easing: "ease-in-out", fill: "forwards" },
+    { duration: total, easing: 'ease-in-out', fill: 'forwards' },
   );
 
   const cleanup = () => {
     node.remove();
-    untrack("tombstones", node);
+    untrack('tombstones', node);
   };
   animation.onfinish = cleanup;
   animation.oncancel = cleanup;
@@ -237,7 +240,7 @@ const EFFECTS: Record<PageEffectName, EffectDef> = {
     nextDelayMs: () => randomBetween(WITCH_DELAY_MIN_MS, WITCH_DELAY_MAX_MS),
     maxActive: 1,
   },
-  "spider-drop": {
+  'spider-drop': {
     spawn: spawnDroppingSpider,
     nextDelayMs: () => randomBetween(4000, 9000),
     maxActive: 1,
@@ -260,7 +263,7 @@ const EFFECTS: Record<PageEffectName, EffectDef> = {
 // sure a tick already in flight at the exact moment the preference flips
 // can't sneak a node in before that stop takes effect.
 function canSpawnNow(name: PageEffectName, preset: IntensityPreset): boolean {
-  if (typeof document !== "undefined" && document.hidden) return false;
+  if (typeof document !== 'undefined' && document.hidden) return false;
   if (prefersReducedMotion()) return false;
   const activeCount = activeNodes.get(name)?.size ?? 0;
   return activeCount < EFFECTS[name].maxActive * preset.maxActiveMultiplier;
@@ -278,7 +281,7 @@ function schedule(name: PageEffectName) {
 }
 
 export function startPageEffect(name: PageEffectName) {
-  if (typeof document === "undefined" || prefersReducedMotion() || timers.has(name)) return;
+  if (typeof document === 'undefined' || prefersReducedMotion() || timers.has(name)) return;
   schedule(name);
 }
 
@@ -298,7 +301,7 @@ export function stopPageEffect(name: PageEffectName) {
 }
 
 export function syncPageEffectsFromBody() {
-  if (typeof document === "undefined") return;
+  if (typeof document === 'undefined') return;
   // startPageEffect() alone would just refuse to (re)start anything here —
   // it doesn't stop a scheduler already running from before the preference
   // changed. This is what actually tears down ambient effects the moment

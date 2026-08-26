@@ -1,4 +1,4 @@
-export const STYLE_ID = "halloween-styles";
+export const STYLE_ID = 'halloween-styles';
 
 export const CSS = `
 .halloween-web { width: 100%; height: 100%; display: block; }
@@ -195,8 +195,8 @@ body.halloween-intensity-party {
 `;
 
 export function injectStyles() {
-  if (typeof document === "undefined" || document.getElementById(STYLE_ID)) return;
-  const style = document.createElement("style");
+  if (typeof document === 'undefined' || document.getElementById(STYLE_ID)) return;
+  const style = document.createElement('style');
   style.id = STYLE_ID;
   style.textContent = CSS;
   document.head.appendChild(style);
@@ -216,6 +216,6 @@ export function injectStyles() {
  * "No color configured" means "don't touch it", not "clear whatever's there".
  */
 export function applyColorOverride(color: string) {
-  if (typeof document === "undefined" || !color) return;
-  document.body.style.setProperty("--halloween-color", color);
+  if (typeof document === 'undefined' || !color) return;
+  document.body.style.setProperty('--halloween-color', color);
 }

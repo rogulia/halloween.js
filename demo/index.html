@@ -16,11 +16,13 @@
       content="Zero-dependency Halloween decorations and ambient effects for any website."
     />
     <meta property="og:url" content="https://halloween.js.org/" />
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕸️</text></svg>"
-    />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#150e1f" />
     <link rel="stylesheet" href="./demo.css" />
   </head>
   <body>
@@ -34,7 +36,12 @@
           <a href="#install">Install</a>
           <a href="https://github.com/rogulia/halloween.js">GitHub</a>
         </nav>
-        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light theme">
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Switch to light theme"
+        >
           <span aria-hidden="true">🌙</span>
         </button>
       </div>
@@ -45,12 +52,14 @@
         <p class="eyebrow">Halloween effects, minus the framework</p>
         <h1>Make your site haunted in one script tag.</h1>
         <p class="hero-copy">
-          Screen-corner webs, blinking eyes, flying witches, a dropping spider and a rising tombstone. Zero
-          dependencies, seasonal by default.
+          Screen-corner webs, blinking eyes, flying witches, a dropping spider and a rising
+          tombstone. Zero dependencies, seasonal by default.
         </p>
         <div class="hero-cta">
           <a class="btn btn-primary" href="#playground">Build your setup</a>
-          <a class="btn btn-secondary" href="https://github.com/rogulia/halloween.js">View on GitHub</a>
+          <a class="btn btn-secondary" href="https://github.com/rogulia/halloween.js"
+            >View on GitHub</a
+          >
         </div>
         <ul class="proof-points">
           <li>Zero dependencies</li>
@@ -70,7 +79,13 @@
           <h3>Install</h3>
 
           <div class="tabs" role="tablist" aria-label="Install method">
-            <button role="tab" id="tab-script" aria-selected="true" aria-controls="panel-script" type="button">
+            <button
+              role="tab"
+              id="tab-script"
+              aria-selected="true"
+              aria-controls="panel-script"
+              type="button"
+            >
               Script tag
             </button>
             <button
@@ -88,18 +103,24 @@
           <div id="panel-script" role="tabpanel" aria-labelledby="tab-script" tabindex="0">
             <div class="code-block">
               <pre><code id="script-example"></code></pre>
-              <button type="button" class="copy-btn" id="copy-script-btn" data-label="Copy">Copy</button>
+              <button type="button" class="copy-btn" id="copy-script-btn" data-label="Copy">
+                Copy
+              </button>
             </div>
           </div>
 
           <div id="panel-npm" role="tabpanel" aria-labelledby="tab-npm" tabindex="0" hidden>
             <div class="code-block">
               <pre><code id="npm-install-example">npm install halloween.js</code></pre>
-              <button type="button" class="copy-btn" id="copy-npm-install-btn" data-label="Copy">Copy</button>
+              <button type="button" class="copy-btn" id="copy-npm-install-btn" data-label="Copy">
+                Copy
+              </button>
             </div>
             <div class="code-block">
               <pre><code id="npm-import-example">import "halloween.js";</code></pre>
-              <button type="button" class="copy-btn" id="copy-npm-import-btn" data-label="Copy">Copy</button>
+              <button type="button" class="copy-btn" id="copy-npm-import-btn" data-label="Copy">
+                Copy
+              </button>
             </div>
           </div>
         </div>
@@ -162,11 +183,22 @@
               <legend>Intensity</legend>
               <div class="segmented">
                 <label class="segmented-option">
-                  <input type="radio" name="cfg-intensity" id="cfg-intensity-subtle" value="subtle" />
+                  <input
+                    type="radio"
+                    name="cfg-intensity"
+                    id="cfg-intensity-subtle"
+                    value="subtle"
+                  />
                   <span>Subtle</span>
                 </label>
                 <label class="segmented-option">
-                  <input type="radio" name="cfg-intensity" id="cfg-intensity-normal" value="normal" checked />
+                  <input
+                    type="radio"
+                    name="cfg-intensity"
+                    id="cfg-intensity-normal"
+                    value="normal"
+                    checked
+                  />
                   <span>Normal</span>
                 </label>
                 <label class="segmented-option">
@@ -183,7 +215,12 @@
                 <span>Custom color</span>
               </label>
               <div class="color-row">
-                <input type="color" id="cfg-color-picker" value="#f4b342" aria-label="Pick spider &amp; web color" />
+                <input
+                  type="color"
+                  id="cfg-color-picker"
+                  value="#f4b342"
+                  aria-label="Pick spider &amp; web color"
+                />
                 <label class="visually-hidden" for="cfg-color">Spider &amp; web color (hex)</label>
                 <input
                   type="text"
@@ -213,15 +250,17 @@
                   <label class="visually-hidden" for="cfg-season-end-month">End month</label>
                   <select id="cfg-season-end-month"></select>
                 </div>
-                <p class="field-note">Default is 18 Oct – 2 Nov. Leave it as-is unless you need a different window.</p>
+                <p class="field-note">
+                  Default is 18 Oct – 2 Nov. Leave it as-is unless you need a different window.
+                </p>
               </div>
             </details>
 
             <div class="control-group body-output-group">
               <h3 id="body-output-heading">Your &lt;body&gt; tag</h3>
               <p class="live-body-copy">
-                These controls update your <code>&lt;body&gt;</code> classes and attributes below — the
-                <code>&lt;script&gt;</code> tag itself never changes.
+                These controls update your <code>&lt;body&gt;</code> classes and attributes below —
+                the <code>&lt;script&gt;</code> tag itself never changes.
               </p>
               <div class="code-block body-output-block">
                 <textarea
@@ -233,7 +272,9 @@
                   rows="1"
                   aria-labelledby="body-output-heading"
                 ></textarea>
-                <button type="button" class="copy-btn" id="copy-body-btn" data-label="Copy">Copy</button>
+                <button type="button" class="copy-btn" id="copy-body-btn" data-label="Copy">
+                  Copy
+                </button>
               </div>
 
               <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
@@ -246,7 +287,11 @@
               <span class="preview-badge">Season forced open for preview</span>
               <button id="replay-btn" type="button" class="btn-ghost">Replay</button>
             </div>
-            <iframe id="preview-frame" title="halloween.js live preview" src="./preview.html"></iframe>
+            <iframe
+              id="preview-frame"
+              title="halloween.js live preview"
+              src="./preview.html"
+            ></iframe>
           </div>
         </div>
       </section>
@@ -254,7 +299,10 @@
       <section class="credibility">
         <div class="credibility-item">
           <h3>No layout changes</h3>
-          <p>Ambient effects render in a fixed overlay layer — nothing else on the page shifts or resizes.</p>
+          <p>
+            Ambient effects render in a fixed overlay layer — nothing else on the page shifts or
+            resizes.
+          </p>
         </div>
         <div class="credibility-item">
           <h3>Seasonal by default</h3>

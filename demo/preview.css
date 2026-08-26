@@ -9,7 +9,7 @@
   --accent-ink: #2a1b05;
 }
 
-:root[data-theme="light"] {
+:root[data-theme='light'] {
   --bg-0: #faf5ec;
   --bg-1: #f3ebd9;
   --surface: #fffdf8;
@@ -36,7 +36,7 @@ body {
   font-family:
     system-ui,
     -apple-system,
-    "Segoe UI",
+    'Segoe UI',
     sans-serif;
   overflow-x: hidden;
 }
