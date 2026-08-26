@@ -256,7 +256,7 @@
     const classes = buildClasses(currentState);
 
     scriptExample.textContent =
-      '<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.0/dist/halloween.iife.js"><\/script>';
+      '<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.1/dist/halloween.iife.js"><\/script>';
     const bodyMarkup = buildBodyMarkup(currentState, classes);
     bodyExample.value = bodyMarkup;
     resizeBodyTextarea();
