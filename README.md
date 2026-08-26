@@ -1,5 +1,7 @@
 # 🎃 halloween.js
 
+[![npm version](https://img.shields.io/npm/v/halloween.js.svg)](https://www.npmjs.com/package/halloween.js)
+
 Zero-dependency Halloween screen-corner decorations and ambient page effects for any website.
 
 [Live demo](https://halloween.js.org/)
