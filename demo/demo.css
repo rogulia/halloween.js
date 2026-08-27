@@ -381,59 +381,78 @@ main section {
 
 .toggle-cards {
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .toggle-card {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   border: 1px solid var(--border);
   background: var(--surface-2);
   border-radius: var(--radius);
   padding: 10px 14px;
   cursor: pointer;
-  flex: 1 1 auto;
   min-height: 44px;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
 }
 
 .toggle-card input {
-  width: 16px;
-  height: 16px;
-  accent-color: var(--accent);
-  flex-shrink: 0;
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .toggle-glyph {
-  font-size: 1.05rem;
-}
-
-.toggle-glyph-badge {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  min-width: 28px;
-  height: 18px;
-  padding: 0 5px;
-  border-radius: 4px;
-  background: var(--surface);
-  border: 1px solid var(--border-strong);
-  color: var(--fg-muted);
-  font-size: 0.62rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  opacity: 0.4;
+  filter: saturate(0.35);
+  transition:
+    opacity 0.15s ease,
+    filter 0.15s ease;
+}
+
+.toggle-glyph svg {
+  width: auto;
+  height: 28px;
 }
 
 .toggle-text {
   font-size: 0.9rem;
   font-weight: 600;
-  white-space: nowrap;
+  color: var(--fg-muted);
+  transition: color 0.15s ease;
 }
 
 .toggle-card:has(input:checked) {
   border-color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 14%, var(--surface-2));
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface-2));
+}
+
+.toggle-card:has(input:checked) .toggle-glyph {
+  opacity: 1;
+  filter: saturate(1);
+}
+
+.toggle-card:has(input:checked) .toggle-text {
+  color: var(--fg);
+}
+
+.toggle-card input:focus-visible {
+  outline: none;
+}
+
+.toggle-card:has(input:focus-visible) {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
 }
 
 .segmented {
