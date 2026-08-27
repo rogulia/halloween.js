@@ -888,6 +888,31 @@ main section {
   color: var(--accent);
 }
 
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  vertical-align: middle;
+}
+
+.footer-mit-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1;
+}
+
+.footer-icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.footer-icon-stroke {
+  fill: none;
+  stroke: currentColor;
+}
+
 /* ---------- responsive ---------- */
 
 @media (max-width: 1024px) {
