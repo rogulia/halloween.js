@@ -2,7 +2,7 @@
 
 > Zero-dependency Halloween decorations and ambient page effects for any website. Screen-corner spider webs, blinking eyes, flying witches, a dropping spider and a rising tombstone — all class-driven, no build step required. Under 10 KB gzipped, MIT licensed, free.
 
-Install via npm (`npm install halloween.js`, `import "halloween.js"`) or via a single CDN script tag (`<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.2/dist/halloween.iife.js"></script>`) — works on plain HTML sites, WordPress, and any bundler-based project.
+Install via npm (`npm install halloween.js`, `import "halloween.js"`) or via a single CDN script tag (`<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.3/dist/halloween.iife.js"></script>`) — works on plain HTML sites, WordPress, and any bundler-based project.
 
 The library is controlled entirely through HTML classes on `<body>`: add the `halloween` class to turn it on, then add effect classes (`halloween-eyes`, `halloween-witches`, `halloween-spider-drop`, `halloween-tombstones`, `halloween-screen-left-top`, `halloween-screen-right-top`, `halloween-screen-left-bottom`, `halloween-screen-right-bottom`) to opt into specific ambient effects and screen-corner webs. No JavaScript call is required — it watches `<body>`'s classes and re-syncs automatically.
 

@@ -193,6 +193,7 @@
   // below sends whatever the current state is at that moment (never a
   // stale pre-ready snapshot).
   let previewReady = false;
+  let previewTheme = 'light';
 
   function sendStateToPreview(state) {
     if (!previewReady) return;
@@ -201,7 +202,7 @@
       effects: state.effects,
       intensity: state.intensity,
       color: state.colorEnabled ? state.color : null,
-      theme: document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark',
+      theme: previewTheme,
     };
     previewFrame.contentWindow.postMessage(
       { type: 'halloween-preview:state', payload },
@@ -272,7 +273,7 @@
     const classes = buildClasses(currentState);
 
     scriptExample.textContent =
-      '<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.2/dist/halloween.iife.js"><\/script>';
+      '<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.3/dist/halloween.iife.js"><\/script>';
     const bodyMarkup = buildBodyMarkup(currentState, classes);
     bodyExample.value = bodyMarkup;
     resizeBodyTextarea();
@@ -317,18 +318,16 @@
     previewFrame.contentWindow.postMessage({ type: 'halloween-preview:replay' }, PREVIEW_ORIGIN);
   });
 
-  // ---- theme ----
+  // ---- preview theme ----
 
   const themeToggle = el('theme-toggle');
-  const html = document.documentElement;
   themeToggle.addEventListener('click', () => {
-    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
+    previewTheme = previewTheme === 'dark' ? 'light' : 'dark';
     themeToggle.setAttribute(
       'aria-label',
-      next === 'dark' ? 'Switch to light theme' : 'Switch to dark theme',
+      previewTheme === 'dark' ? 'Switch preview to light theme' : 'Switch preview to dark theme',
     );
-    themeToggle.querySelector('span').textContent = next === 'dark' ? '🌙' : '☀️';
+    themeToggle.querySelector('span').textContent = previewTheme === 'dark' ? '🌙' : '☀️';
     sendStateToPreview(currentState);
   });
 

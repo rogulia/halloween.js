@@ -23,10 +23,10 @@ A plain `import` runs the library's auto-init side effect immediately — it sta
 For a no-build-step site (WordPress Theme Editor header, any "custom HTML/scripts" plugin, plain HTML), a single script tag is the simplest way to install it — no npm, no bundler, no separate CSS file:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.2/dist/halloween.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.3/dist/halloween.iife.js"></script>
 ```
 
-After the script tag, the same imperative API is available as `Halloween.pageEffects.start("eyes")` etc. Always pin an exact released version (like `@1.0.2` above) — jsDelivr caches an npm version forever, so it can never change under you.
+After the script tag, the same imperative API is available as `Halloween.pageEffects.start("eyes")` etc. Always pin an exact released version (like `@1.0.3` above) — jsDelivr caches an npm version forever, so it can never change under you.
 
 ## The master switch
 

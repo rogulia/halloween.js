@@ -3,6 +3,9 @@
 [![npm version](https://img.shields.io/npm/v/halloween.js.svg)](https://www.npmjs.com/package/halloween.js)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/halloween.js)](https://bundlephobia.com/package/halloween.js)
 [![license](https://img.shields.io/npm/l/halloween.js.svg)](LICENSE)
+[![npm downloads](https://img.shields.io/npm/dt/halloween.js.svg)](https://www.npmjs.com/package/halloween.js)
+[![jsDelivr hits](https://img.shields.io/jsdelivr/npm/hw/halloween.js.svg)](https://www.jsdelivr.com/package/npm/halloween.js)
+[![GitHub stars](https://img.shields.io/github/stars/rogulia/halloween.js.svg?style=flat)](https://github.com/rogulia/halloween.js)
 
 Zero-dependency Halloween screen-corner decorations and ambient page effects for any website.
 
@@ -25,10 +28,10 @@ A plain `import` runs the library's auto-init side effect immediately — it sta
 For a no-build-step site (WordPress Theme Editor → header, any "custom HTML/scripts" plugin, plain HTML), a single script tag is still the simplest way to install it — no npm, no bundler, no separate CSS file, the script injects its own styles and auto-initializes the same way:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.2/dist/halloween.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.3/dist/halloween.iife.js"></script>
 ```
 
-After the script tag, the same imperative API is available as `Halloween.pageEffects.start("eyes")` etc. — see [Advanced: JS API](#advanced-js-api) below. Always pin an exact released version (like `@1.0.2` above) — jsDelivr caches an npm version forever, so it can never change under you.
+After the script tag, the same imperative API is available as `Halloween.pageEffects.start("eyes")` etc. — see [Advanced: JS API](#advanced-js-api) below. Always pin an exact released version (like `@1.0.3` above) — jsDelivr caches an npm version forever, so it can never change under you.
 
 ### Platform guides
 
@@ -41,7 +44,7 @@ The same script tag works everywhere — only where you paste it, and how you se
 - Add `class="halloween"` to `<body>` via your theme's body class filter, or add a small custom-HTML block with `<script>document.body.classList.add("halloween")</script>`.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.2/dist/halloween.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.3/dist/halloween.iife.js"></script>
 ```
 
 #### Webflow
@@ -50,7 +53,7 @@ The same script tag works everywhere — only where you paste it, and how you se
 - Webflow doesn't expose the `<body>` tag for editing directly — add the master class from the same Custom Code panel (Footer Code) instead:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.2/dist/halloween.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.3/dist/halloween.iife.js"></script>
 <script>document.body.classList.add("halloween");</script>
 ```
 
@@ -64,7 +67,7 @@ The same script tag works everywhere — only where you paste it, and how you se
 ```
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.2/dist/halloween.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.3/dist/halloween.iife.js"></script>
 ```
 
 #### Squarespace
@@ -73,7 +76,7 @@ The same script tag works everywhere — only where you paste it, and how you se
 - Add the master class from the same Header field instead:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.2/dist/halloween.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.3/dist/halloween.iife.js"></script>
 <script>document.body.classList.add("halloween");</script>
 ```
 
@@ -156,7 +159,7 @@ If you're using the plain script tag, `?s=DD-MM&e=DD-MM` on the script's own `sr
 
 ```html
 <script
-  src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.2/dist/halloween.iife.js?s=18-10&e=02-11"
+  src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.3/dist/halloween.iife.js?s=18-10&e=02-11"
 ></script>
 ```
 

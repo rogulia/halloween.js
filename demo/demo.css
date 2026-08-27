@@ -143,11 +143,12 @@ summary {
 }
 
 .wordmark {
-  font-size: 1.15rem;
-  font-weight: 800;
+  font-family: 'Creepster', system-ui, sans-serif;
+  font-size: 1.7rem;
+  font-weight: 400;
   color: var(--fg);
   text-decoration: none;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.02em;
   white-space: nowrap;
 }
 
@@ -174,25 +175,10 @@ summary {
   color: var(--fg);
 }
 
-.theme-toggle {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--fg);
-  border-radius: 999px;
-  width: 40px;
-  height: 40px;
-  min-width: 44px;
-  min-height: 44px;
+.site-nav-icon {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 1.05rem;
-  flex-shrink: 0;
-}
-
-.theme-toggle:hover {
-  border-color: var(--accent);
+  padding: 0;
 }
 
 /* ---------- layout helpers ---------- */
@@ -200,7 +186,7 @@ summary {
 main section {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 56px 24px;
+  padding: 32px 24px;
 }
 
 .section-head {
@@ -223,7 +209,7 @@ main section {
 
 .hero {
   padding-top: 56px;
-  padding-bottom: 40px;
+  padding-bottom: 32px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -242,8 +228,8 @@ main section {
 .hero h1 {
   font-size: clamp(2.2rem, 4.4vw, 3.4rem);
   line-height: 1.08;
-  margin: 0 0 16px;
-  max-width: 18ch;
+  margin: 0 0 20px;
+  max-width: 22ch;
   letter-spacing: -0.02em;
 }
 
@@ -251,49 +237,7 @@ main section {
   color: var(--fg-muted);
   font-size: 1.1rem;
   max-width: 56ch;
-  margin: 0 0 28px;
-}
-
-.hero-cta {
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 32px;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 13px 24px;
-  border-radius: 999px;
-  font-weight: 700;
-  font-size: 0.98rem;
-  text-decoration: none;
-  min-height: 44px;
-  border: 1px solid transparent;
-  cursor: pointer;
-}
-
-.btn-primary {
-  background: var(--accent);
-  color: var(--accent-ink);
-}
-
-.btn-primary:hover {
-  background: var(--accent-strong);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: var(--fg);
-  border-color: var(--border-strong);
-}
-
-.btn-secondary:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  margin: 0 0 32px;
 }
 
 .btn-ghost {
@@ -315,22 +259,24 @@ main section {
 
 .proof-points {
   display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
   list-style: none;
   margin: 0;
   padding: 0;
+  font-size: 0.9rem;
+  color: var(--fg-faint);
 }
 
 .proof-points li {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 7px 14px;
-  font-size: 0.85rem;
-  color: var(--fg-muted);
-  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.proof-points li:not(:last-child)::after {
+  content: '·';
+  margin: 0 12px;
+  color: var(--border-strong);
 }
 
 /* ---------- playground ---------- */
@@ -842,8 +788,8 @@ main section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
 
 .credibility-item {
@@ -911,6 +857,20 @@ main section {
 .footer-icon-stroke {
   fill: none;
   stroke: currentColor;
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 44px;
+}
+
+.hero-badges img {
+  display: block;
+  height: 20px;
+  width: auto;
 }
 
 /* ---------- responsive ---------- */
@@ -986,18 +946,9 @@ main section {
 }
 
 @media (max-width: 520px) {
-  /* .site-nav normally carries margin-left: auto, which is what pushes
-     both itself and the theme toggle after it to the right edge. Hiding it
-     here would otherwise leave the toggle sitting right next to the
-     wordmark — .theme-toggle takes over that job so the header stays a
-     single row with the wordmark on the left and the toggle on the right,
-     at both 390px and 320px. Playground/Install/GitHub are still one
-     scroll away, so no hamburger menu is needed. */
+  /* Playground/Install/GitHub are still one scroll away, so hiding the
+     nav here doesn't need a hamburger menu replacement. */
   .site-nav {
     display: none;
-  }
-
-  .theme-toggle {
-    margin-left: auto;
   }
 }
