@@ -30,6 +30,53 @@ For a no-build-step site (WordPress Theme Editor → header, any "custom HTML/sc
 
 After the script tag, the same imperative API is available as `Halloween.pageEffects.start("eyes")` etc. — see [Advanced: JS API](#advanced-js-api) below. Always pin an exact released version (like `@1.0.2` above) — jsDelivr caches an npm version forever, so it can never change under you.
 
+### Platform guides
+
+The same script tag works everywhere — only where you paste it, and how you set the `halloween` body class, changes per platform.
+
+#### WordPress
+
+- Without plugins: **Appearance → Theme Editor → header.php**, paste the script tag right before `</head>`. Only works on themes that allow file editing (not on WordPress.com's basic plan or block themes with editing disabled).
+- With a "Insert Headers and Footers"-type plugin (any popular one works): paste the same script tag into its **Header** field, no theme editing needed.
+- Add `class="halloween"` to `<body>` via your theme's body class filter, or add a small custom-HTML block with `<script>document.body.classList.add("halloween")</script>`.
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.2/dist/halloween.iife.js"></script>
+```
+
+#### Webflow
+
+- **Project Settings → Custom Code → Head Code** applies the script site-wide; use a specific page's **Page Settings → Custom Code** to scope it to one page instead.
+- Webflow doesn't expose the `<body>` tag for editing directly — add the master class from the same Custom Code panel (Footer Code) instead:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.2/dist/halloween.iife.js"></script>
+<script>document.body.classList.add("halloween");</script>
+```
+
+#### Shopify
+
+- **Online Store → Themes → Edit Code → theme.liquid**, paste the script tag right before `</head>`.
+- Shopify's `theme.liquid` gives you the `<body>` tag directly, so add the class there:
+
+```html
+<body class="halloween">
+```
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.2/dist/halloween.iife.js"></script>
+```
+
+#### Squarespace
+
+- **Settings → Advanced → Code Injection → Header**, paste the script tag. Code Injection only exposes header/footer, not `<body>` itself.
+- Add the master class from the same Header field instead:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.2/dist/halloween.iife.js"></script>
+<script>document.body.classList.add("halloween");</script>
+```
+
 ## The master switch
 
 `<body class="halloween">` turns the library on. Without it, nothing runs at all — no ambient effects, no screen corners. This is deliberate: one class to flip, everywhere else just uses modifiers. Additional body classes (below) opt in to specific ambient effects and screen corners; the library automatically re-syncs itself whenever `<body>`'s classes change, so toggling any of these classes from your own code is enough — no JS call required.

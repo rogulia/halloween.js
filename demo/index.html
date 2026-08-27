@@ -1,29 +1,31 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>halloween.js — Halloween effects for any website</title>
     <meta
       name="description"
-      content="Zero-dependency Halloween decorations and ambient effects for any website."
+      content="Zero-dependency Halloween decorations and ambient effects for any website: screen webs, blinking eyes, flying witches, a dropping spider. Under 10 KB, one script tag."
     />
     <link rel="canonical" href="https://halloween.js.org/" />
+    <meta name="google-site-verification" content="K3FFE_VjnqegPnSnriEZZEmFaV0_lSTCi8bS_L-kUNM" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="halloween.js — Halloween effects for any website" />
     <meta
       property="og:description"
-      content="Zero-dependency Halloween decorations and ambient effects for any website."
+      content="Zero-dependency Halloween decorations and ambient effects for any website: screen webs, blinking eyes, flying witches, a dropping spider. Under 10 KB, one script tag."
     />
     <meta property="og:url" content="https://halloween.js.org/" />
     <meta property="og:image" content="https://halloween.js.org/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="halloween.js — Halloween effects for any website" />
     <meta
       name="twitter:description"
-      content="Zero-dependency Halloween decorations and ambient effects for any website."
+      content="Zero-dependency Halloween decorations and ambient effects for any website: screen webs, blinking eyes, flying witches, a dropping spider. Under 10 KB, one script tag."
     />
     <meta name="twitter:image" content="https://halloween.js.org/og-image.png" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
@@ -32,8 +34,40 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#150e1f" />
+    <meta name="theme-color" content="#f3ebd9" />
     <link rel="stylesheet" href="./demo.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "halloween.js",
+        "url": "https://halloween.js.org/",
+        "description": "Zero-dependency Halloween decorations and ambient effects for any website: screen webs, blinking eyes, flying witches, a dropping spider. Under 10 KB, one script tag.",
+        "applicationCategory": "WebApplication",
+        "applicationSubCategory": "JavaScript library",
+        "operatingSystem": "Any",
+        "softwareVersion": "1.0.2",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Iurii Rogulia",
+          "url": "https://iurii.rogulia.fi"
+        },
+        "license": "https://opensource.org/licenses/MIT",
+        "downloadUrl": "https://www.npmjs.com/package/halloween.js",
+        "codeRepository": "https://github.com/rogulia/halloween.js",
+        "image": "https://halloween.js.org/og-image.png"
+      }
+    </script>
+    <script
+      defer
+      src="https://u.rogulia.fi/script.js"
+      data-website-id="51dd7656-1ec6-465a-8197-a40c58937507"
+    ></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -50,9 +84,9 @@
           id="theme-toggle"
           class="theme-toggle"
           type="button"
-          aria-label="Switch to light theme"
+          aria-label="Switch to dark theme"
         >
-          <span aria-hidden="true">🌙</span>
+          <span aria-hidden="true">☀️</span>
         </button>
       </div>
     </header>
@@ -133,6 +167,32 @@
               </button>
             </div>
           </div>
+
+          <details class="control-group season-details">
+            <summary>No-code platform guides (WordPress, Webflow, Shopify, Squarespace)</summary>
+            <ul>
+              <li>
+                <strong>WordPress</strong> — Theme Editor → header.php, or any "Insert Headers and
+                Footers"-type plugin.
+              </li>
+              <li>
+                <strong>Webflow</strong> — Project Settings → Custom Code → Head Code (or Page
+                Settings for one page).
+              </li>
+              <li>
+                <strong>Shopify</strong> — Edit Code → theme.liquid, paste before
+                <code>&lt;/head&gt;</code>.
+              </li>
+              <li><strong>Squarespace</strong> — Settings → Advanced → Code Injection → Header.</li>
+            </ul>
+            <p>
+              Paste the same script tag from the "Script tag" panel above, then add
+              <code>class="halloween"</code> to <code>&lt;body&gt;</code> (or
+              <code>document.body.classList.add("halloween")</code> where the platform doesn't
+              expose <code>&lt;body&gt;</code> directly). Full steps in the
+              <a href="https://github.com/rogulia/halloween.js#platform-guides">README</a>.
+            </p>
+          </details>
         </div>
 
         <div class="playground-grid">

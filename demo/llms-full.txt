@@ -1,0 +1,123 @@
+# halloween.js
+
+Zero-dependency Halloween screen-corner decorations and ambient page effects for any website.
+
+Live demo: https://halloween.js.org/
+GitHub: https://github.com/rogulia/halloween.js
+npm: https://www.npmjs.com/package/halloween.js
+License: MIT
+Author: Iurii Rogulia (https://iurii.rogulia.fi)
+
+## Install
+
+```bash
+npm install halloween.js
+```
+
+```js
+import halloween, { pageEffects } from "halloween.js";
+```
+
+A plain `import` runs the library's auto-init side effect immediately — it starts watching `<body>` for the master `halloween` class as soon as the module loads, no separate init call needed. TypeScript types ship with the package.
+
+For a no-build-step site (WordPress Theme Editor header, any "custom HTML/scripts" plugin, plain HTML), a single script tag is the simplest way to install it — no npm, no bundler, no separate CSS file:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.2/dist/halloween.iife.js"></script>
+```
+
+After the script tag, the same imperative API is available as `Halloween.pageEffects.start("eyes")` etc. Always pin an exact released version (like `@1.0.2` above) — jsDelivr caches an npm version forever, so it can never change under you.
+
+## The master switch
+
+`<body class="halloween">` turns the library on. Without it, nothing runs at all — no ambient effects, no screen corners. Additional body classes opt in to specific ambient effects and screen corners; the library automatically re-syncs itself whenever `<body>`'s classes change.
+
+## Page-level: ambient effects
+
+Add any of these on `<body>`, alongside the master `halloween` class:
+
+```html
+<body class="halloween halloween-eyes halloween-witches halloween-spider-drop halloween-tombstones halloween-screen-left-top">
+```
+
+| Class | Effect |
+| --- | --- |
+| `halloween-eyes` | Blinking eyes fade in/out at random spots |
+| `halloween-witches` | Witches fly across at a random angle and direction |
+| `halloween-spider-drop` | A spider drops from the top to 75% of viewport height, then climbs back up, at a random horizontal position each time |
+| `halloween-tombstones` | A tombstone rises ~80–120px out of a random horizontal spot at the bottom of the viewport, holds briefly, then sinks back down |
+| `halloween-screen-left-top` / `halloween-screen-right-top` / `halloween-screen-left-bottom` / `halloween-screen-right-bottom` | A static spider web fixed to that viewport corner — any combination |
+
+Or toggle it from JS, e.g. for SPA routing:
+
+```js
+document.body.classList.toggle("halloween-eyes", someCondition);
+```
+
+At most one instance of each ambient effect is on screen at a time (more with `halloween-intensity-party`). While the tab is in the background, no new ambient nodes are created.
+
+### Intensity presets
+
+Add one intensity class alongside the effect classes to control spawn rate, max concurrent nodes, size and page-layer opacity.
+
+| Class | Spawn delay | Max concurrent per effect | Size | Page opacity |
+| --- | --- | --- | --- | --- |
+| `halloween-intensity-subtle` | 2.5x slower | 1 | ~75% | 0.65 |
+| `halloween-intensity-normal` (default) | 1x | 1 | 100% | 1 |
+| `halloween-intensity-party` | 2x faster | 2 | ~115% | 1 |
+
+## Season window
+
+By default the library only does anything within a ~2 week window around Halloween (18 Oct – 2 Nov). Override with `data-halloween-start`/`data-halloween-end` attributes on `<body>` (format `DD-MM`):
+
+```html
+<body class="halloween halloween-eyes" data-halloween-start="18-10" data-halloween-end="02-11">
+```
+
+Outside the season window, the master switch stays off entirely. A non-empty but malformed value fails open (runs as if there were no season restriction).
+
+For the plain script tag, `?s=DD-MM&e=DD-MM` on the script's own `src` is also supported as a shorthand. Precedence: `data-halloween-start`/`data-halloween-end` attribute > script `?s=`/`?e=` query param > library default.
+
+## Color
+
+Spiders, threads, webs and the witch silhouette read `color: var(--halloween-color, currentColor)`, inheriting the page's text color by default. Override with:
+
+```css
+:root {
+  --halloween-color: #ff6b00;
+}
+```
+
+For the plain script tag, `?color=` on the script's own `src` (URL-encoded) is also supported.
+
+Ambient effects render in a fixed full-page layer at `z-index: var(--halloween-page-z-index, 999)`.
+
+## Advanced: JS API
+
+**`halloween()`** — an optional, immediate manual sync against `<body>`'s current classes and the season gate.
+
+```js
+import halloween from "halloween.js";
+document.body.classList.add("halloween", "halloween-eyes");
+halloween();
+```
+
+**`pageEffects.start(name)` / `pageEffects.stop(name)`** — low-level, direct control over one ambient effect (`"eyes" | "witches" | "spider-drop" | "tombstones"`), bypassing the class-driven system entirely.
+
+```js
+import { pageEffects } from "halloween.js";
+pageEffects.start("eyes");
+pageEffects.stop("witches");
+```
+
+## Accessibility
+
+Every animation respects `prefers-reduced-motion: reduce`, and picks up live changes to it while the page stays open. Ambient effects don't spawn when reduced motion is on; any already on screen are removed immediately. Static screen-corner webs are unaffected — they're not animated to begin with. All decorative SVGs are `aria-hidden`.
+
+## Bundle
+
+Single IIFE build (styles included) for drop-in use, plus ESM/CJS builds and TypeScript types. Under 10 KB gzipped, zero runtime dependencies.
+
+## License
+
+MIT © Iurii Rogulia (https://iurii.rogulia.fi)

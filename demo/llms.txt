@@ -1,0 +1,23 @@
+# halloween.js
+
+> Zero-dependency Halloween decorations and ambient page effects for any website. Screen-corner spider webs, blinking eyes, flying witches, a dropping spider and a rising tombstone — all class-driven, no build step required. Under 10 KB gzipped, MIT licensed, free.
+
+Install via npm (`npm install halloween.js`, `import "halloween.js"`) or via a single CDN script tag (`<script src="https://cdn.jsdelivr.net/npm/halloween.js@1.0.2/dist/halloween.iife.js"></script>`) — works on plain HTML sites, WordPress, and any bundler-based project.
+
+The library is controlled entirely through HTML classes on `<body>`: add the `halloween` class to turn it on, then add effect classes (`halloween-eyes`, `halloween-witches`, `halloween-spider-drop`, `halloween-tombstones`, `halloween-screen-left-top`, `halloween-screen-right-top`, `halloween-screen-left-bottom`, `halloween-screen-right-bottom`) to opt into specific ambient effects and screen-corner webs. No JavaScript call is required — it watches `<body>`'s classes and re-syncs automatically.
+
+By default it only runs in a ~2 week season window around Halloween (18 Oct – 2 Nov), overridable via `data-halloween-start`/`data-halloween-end` attributes on `<body>`. It respects `prefers-reduced-motion` live, has zero runtime dependencies, and renders in a fixed overlay layer that never shifts page layout.
+
+- [Live demo and interactive playground](https://halloween.js.org/): build a configuration and copy the generated HTML/script tag
+- [GitHub repository](https://github.com/rogulia/halloween.js): full README, source code, issue tracker
+- [npm package](https://www.npmjs.com/package/halloween.js): install instructions, version history
+- [Full reference](https://halloween.js.org/llms-full.txt): complete class reference, intensity presets, color customization, JS API, in plain text
+
+## Key facts
+
+- License: MIT
+- Author: Iurii Rogulia (https://iurii.rogulia.fi)
+- Package name: `halloween.js`
+- Bundle size: under 10 KB gzipped
+- Dependencies: none
+- Formats: ESM, CJS, and IIFE (CDN script tag) builds, with TypeScript types included
