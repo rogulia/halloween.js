@@ -1,6 +1,6 @@
 {
   "name": "halloween.js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Zero-dependency Halloween screen-corner decorations and ambient page effects for any website.",
   "type": "module",
   "main": "./dist/halloween.cjs",
