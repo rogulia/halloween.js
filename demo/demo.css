@@ -829,6 +829,35 @@ main section {
   font-size: 0.9rem;
 }
 
+/* ---------- contribute cta ---------- */
+
+.contribute-cta {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0 40px;
+}
+
+.contribute-cta a {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--fg);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+}
+
+.contribute-cta a:hover,
+.contribute-cta a:focus-visible {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+}
+
 /* ---------- footer ---------- */
 
 .site-footer {

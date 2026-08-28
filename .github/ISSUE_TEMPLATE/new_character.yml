@@ -1,0 +1,62 @@
+name: New character / effect proposal
+description: Propose a new ambient effect or character (see CONTRIBUTING.md for the acceptance criteria)
+labels: ["enhancement", "new-effect"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filling this in, skim the [acceptance criteria in CONTRIBUTING.md](https://github.com/rogulia/halloween.js/blob/main/CONTRIBUTING.md#before-adding-a-new-effect-read-the-acceptance-criteria) — it covers what's likely to get accepted (light/dark support, reduced-motion, no external resources, licensing, etc).
+
+  - type: input
+    id: name
+    attributes:
+      label: Character / effect name
+      placeholder: e.g. "Flying bat", "Black cat crossing"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What is it, and how would it behave (spawn frequency, animation, screen position)?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reference
+    attributes:
+      label: Reference / sketch
+      description: Attach a sketch, reference image, or draft SVG if you have one. Drag and drop images directly into this box.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: art-status
+    attributes:
+      label: Art status
+      options:
+        - I already have a finished SVG ready to contribute
+        - I can draw the SVG but haven't yet
+        - I have an idea but can't produce the art myself
+    validations:
+      required: true
+
+  - type: dropdown
+    id: implementation
+    attributes:
+      label: Implementation
+      description: See CONTRIBUTING.md's three contribution levels.
+      options:
+        - I want to implement the full effect myself (art + code + tests)
+        - I'll contribute the art only — a maintainer can complete the integration
+    validations:
+      required: true
+
+  - type: input
+    id: license
+    attributes:
+      label: Art source / license
+      description: Is the artwork original, or based on something else? Must be compatible with the project's MIT license (original, public domain, CC0, MIT, etc.).
+    validations:
+      required: false

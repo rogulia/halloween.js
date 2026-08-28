@@ -11,6 +11,8 @@ Zero-dependency Halloween screen-corner decorations and ambient page effects for
 
 [Live demo](https://halloween.js.org/)
 
+Want to contribute? See [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ![halloween.js cover](assets/cover.png)
 
 ## Install

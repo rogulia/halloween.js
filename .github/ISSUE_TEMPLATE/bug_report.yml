@@ -1,0 +1,86 @@
+name: Bug report
+description: Something in halloween.js isn't working as expected
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened
+      description: What did you expect, and what did you get instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Minimal reproduction
+      description: A minimal HTML page, CodePen/StackBlitz link, or exact steps that reproduce the issue.
+      placeholder: |
+        <script src="https://cdn.jsdelivr.net/npm/halloween.js"></script>
+        <body class="halloween halloween-eyes">
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: halloween.js version
+      description: From the CDN URL pin, or `"halloween.js"` in your package.json/lockfile.
+      placeholder: 1.0.3
+    validations:
+      required: true
+
+  - type: dropdown
+    id: install-method
+    attributes:
+      label: Install method
+      options:
+        - CDN (script tag)
+        - npm / bundler
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and version
+      placeholder: Chrome 128, Firefox 130, Safari 17.6...
+    validations:
+      required: true
+
+  - type: input
+    id: body-classes
+    attributes:
+      label: Body classes in use
+      description: The halloween.js-related classes on `<body>` at the time of the bug (e.g. `halloween halloween-eyes halloween-screen-left-top halloween-intensity-party`).
+    validations:
+      required: false
+
+  - type: input
+    id: season-window
+    attributes:
+      label: data-halloween-start / data-halloween-end
+      description: If set on `<body>`, the season window override in use (default is 18-10 to 02-11). Leave blank if not set.
+      placeholder: e.g. data-halloween-start="01-10" data-halloween-end="15-11"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: reduced-motion
+    attributes:
+      label: prefers-reduced-motion
+      description: Is "reduce motion" enabled in your OS/browser settings?
+      options:
+        - "No"
+        - "Yes"
+        - Not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: Console errors, screenshots, or other context.
+    validations:
+      required: false
