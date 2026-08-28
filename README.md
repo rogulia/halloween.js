@@ -193,6 +193,19 @@ Ambient effects render in a fixed full-page layer at `z-index: var(--halloween-p
 }
 ```
 
+## Sizing & opacity
+
+Each ambient effect's box size can be overridden independently via CSS custom properties, and the whole effects layer can be dimmed as a unit. Like `--halloween-color` above, a value you set here always wins over whatever the active `halloween-intensity-*` preset would otherwise use.
+
+| Property | Controls | Default |
+| --- | --- | --- |
+| `--halloween-eyes-width` / `--halloween-eyes-height` | Size of the blinking-eyes decoration | `64px` / `26px` |
+| `--halloween-witch-width` / `--halloween-witch-height` | Size of the flying witch | `104px` / `130px` |
+| `--halloween-spider-drop-width` / `--halloween-spider-drop-height` | Size of the dropping spider | `90px` / `90px` |
+| `--halloween-tombstone-width` / `--halloween-tombstone-height` | Size of the rising tombstone | `76px` / `96px` |
+| `--halloween-screen-corner-size` | Width and height of each screen-corner web (square) | `120px` |
+| `--halloween-page-opacity` | Opacity of the whole effects layer (ambient nodes and screen corners together) | `1` |
+
 ## Advanced: JS API
 
 The library already auto-syncs itself against `<body>`'s classes (on load, and on every class change), so most sites never need to call anything directly. These two exports are for the cases where that's not enough. If you're using the plain script tag, the same functions are available as `Halloween.halloween` and `Halloween.pageEffects`.
