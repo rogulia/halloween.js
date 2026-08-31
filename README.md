@@ -11,7 +11,7 @@ Zero-dependency Halloween screen-corner decorations and ambient page effects for
 
 [Live demo](https://halloween.js.org/)
 
-Want to contribute? See [CONTRIBUTING.md](CONTRIBUTING.md).
+Want to contribute? See [CONTRIBUTING.md](CONTRIBUTING.md). Thanks to everyone who has — see the [contributors graph](https://github.com/rogulia/halloween.js/graphs/contributors).
 
 ![halloween.js cover](assets/cover.png)
 
