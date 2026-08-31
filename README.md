@@ -1,10 +1,10 @@
 # 🎃 halloween.js
 
 [![npm version](https://img.shields.io/npm/v/halloween.js.svg)](https://www.npmjs.com/package/halloween.js)
-[![bundle size](https://img.shields.io/bundlephobia/minzip/halloween.js)](https://bundlephobia.com/package/halloween.js)
+[![bundle size](https://deno.bundlejs.com/badge?q=halloween.js)](https://bundlejs.com/?q=halloween.js)
 [![license](https://img.shields.io/npm/l/halloween.js.svg)](LICENSE)
 [![npm downloads](https://img.shields.io/npm/dt/halloween.js.svg)](https://www.npmjs.com/package/halloween.js)
-[![jsDelivr hits](https://img.shields.io/jsdelivr/npm/hw/halloween.js.svg)](https://www.jsdelivr.com/package/npm/halloween.js)
+[![jsDelivr hits](https://img.shields.io/jsdelivr/npm/hy/halloween.js.svg)](https://www.jsdelivr.com/package/npm/halloween.js)
 [![GitHub stars](https://img.shields.io/github/stars/rogulia/halloween.js.svg?style=flat)](https://github.com/rogulia/halloween.js)
 
 Zero-dependency Halloween screen-corner decorations and ambient page effects for any website.
