@@ -62,4 +62,24 @@ if (styles.includes('halloween-intensity-normal')) {
   failed = true;
   console.error('FAIL a halloween-intensity-normal class now exists; update the docs');
 }
+// demo/demo.css design scales: values live in the :root token blocks only.
+const demoCss = read('demo/demo.css');
+const componentCss = demoCss.replace(/:root(?:\[[^\]]*\])?\s*\{[^}]*\}/g, '');
+const scaleViolations = [
+  ...(componentCss.match(/border-radius:(?!\s*var\(--radius)[^;]+/g) ?? []),
+  ...(componentCss.match(/z-index:(?!\s*var\(--z-)[^;]+/g) ?? []),
+  ...(componentCss.match(/font-weight:(?!\s*(?:400|500|600|700)\b)[^;]+/g) ?? []),
+  ...(componentCss.match(/font-size:\s*[\d.]+(?:rem|px)[^;]*/g) ?? []),
+  ...(componentCss.match(/transition(?!-duration)[^;]*\d(?:\.\d+)?m?s\b[^;]*/g) ?? []),
+];
+if (scaleViolations.length > 0) {
+  failed = true;
+  console.error(
+    `FAIL demo/demo.css has values outside the token scales:\n  ${scaleViolations.join('\n  ')}`,
+  );
+} else {
+  console.log(
+    'OK   demo/demo.css uses only scale tokens for radius, z-index, weight, size, motion',
+  );
+}
 if (failed) process.exit(1);
