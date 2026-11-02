@@ -8,20 +8,15 @@ import { mockMatchMedia } from './test-utils';
 // `npm run build` in `npm run check`, so a dist-dependent check here would
 // be either unbuildable or fragile depending on run order. Bundle filenames
 // and the IIFE global are verified separately, post-build, by
-// scripts/check-exports.mjs (part of `npm run check`'s test:exports step);
-// a full-repo text audit is documented separately in the task report.
+// scripts/check-exports.mjs (part of `npm run check`'s test:exports step).
 //
-// Absence of the previous brand's identifiers is proven structurally (exact
+// Absence of any other library's identifiers is proven structurally (exact
 // key-set / global-diff checks) rather than by asserting a specific old
-// name is undefined — that would mean spelling the retired name out in
-// source just to test for it, which is exactly what this guard exists to
-// prevent from lingering.
+// name is undefined, which would mean spelling that name out in source.
 //
-// Element-level decoration (initElements/refreshElements/destroyElements,
-// data-halloween-init, .halloween-host/-decor/-trigger-*, corner classes)
-// was removed entirely ahead of the 1.0 API freeze — this file also guards
-// that removal: the exact remaining export set, and that a leftover
-// halloween-{corner} class on an element is never touched.
+// The public export set is exactly what is listed below; no element-level
+// decoration API exists, and a halloween-{corner} class on an element is
+// never touched.
 describe('rename guard — critical halloween.js identifiers', () => {
   beforeEach(() => {
     vi.resetModules();

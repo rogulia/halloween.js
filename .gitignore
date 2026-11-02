@@ -3,5 +3,4 @@ dist/
 demo/dist/
 *.log
 .DS_Store
-.scratch/
-assets/video/
+.internal/
